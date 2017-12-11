@@ -1,7 +1,7 @@
 
 def valid_move?(board, position)
-  position = position.to_i
-  if position.between?(1, 9) && position_taken?(board, position)
+  position = position.to_i-1
+  if position.between?(0, 8) && position_taken?(board, position)
 
       return true
     else
