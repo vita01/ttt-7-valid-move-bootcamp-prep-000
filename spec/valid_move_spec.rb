@@ -1,17 +1,25 @@
-def valid_move?(board,position)
-  if  position.to_i.between?(1,9) && position_taken?(board,position.to_i-1)
-  return  true
-  else
-    return false
+require_relative "../lib/valid_move.rb"
+
+describe './lib/valid_move.rb' do
+
+  it 'returns true for a valid position on an empty board' do
+    board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    position = "1"
+    expect(valid_move?(board, position)).to be_truthy
   end
-end
 
+  it 'returns nil or false for an occupied position' do
+    board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
+    position = "5"
+    
+    expect(valid_move?(board, position)).to be_falsey
+  end
 
+  it 'returns nil or false for a position that is not on the board' do 
+    board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    position = 100
 
-def position_taken?(board, index)
-   if board[index]=='' || board[index]==' ' || board[index]==nil
-      return false
-    else
-      return true
-    end
+    expect(valid_move?(board, position)).to be_falsey
+  end
+
 end
