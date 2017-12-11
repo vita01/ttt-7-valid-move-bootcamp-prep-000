@@ -1,29 +1,22 @@
-require_relative "../lib/valid_move.rb"
-
-describe './lib/valid_move.rb' do
-  it 'returns true for a valid position on an empty board' do
-    board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    index = 0
-    expect(valid_move?(board, index)).to be_truthy
+def valid_move?(board,position)
+  if  position.to_i.between?(1,9) && position_taken?
+    true
+  else
+     false
   end
+end
 
-  it 'returns true for a valid position on a non-empty board' do
-    board = [" ", " ", "X", " ", " ", " ", " ", "O", " "]
-    index = 5
-    expect(valid_move?(board, index)).to be_truthy
-  end
 
-  it 'returns nil or false for an occupied position' do
-    board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
-    index = 4
 
-    expect(valid_move?(board, index)).to be_falsey
-  end
+def position_taken?(board,position)
+  if board[position] == " "
+    false
+    elsif board[position] == ""
+    false
+    elsif  board[position] == nil
+    false
+    else   board[position] == "X" || "O"
+    true
 
-  it 'returns nil or false for a position that is not on the board' do
-    board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    index = 100
-
-    expect(valid_move?(board, index)).to be_falsey
   end
 end
