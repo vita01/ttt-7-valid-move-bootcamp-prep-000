@@ -1,7 +1,7 @@
 
-def valid_move?(board, position)
+def valid_move?(board, position-1)
 
-if  position.to_i.between?(1,9) && !position_taken?(board, position.to_i-1)
+if  position.to_i.between?(0,8) && !position_taken?(board, position.to_i)
   return true
 else return false
 end
