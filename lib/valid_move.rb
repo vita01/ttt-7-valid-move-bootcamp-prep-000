@@ -5,7 +5,7 @@ def valid_move?(board, position)
 
       return true
     else
-      return true
+      return false
     end
 
 
